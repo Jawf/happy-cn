@@ -38,6 +38,14 @@
         "APP_ENV": "preview"
       }
     },
+    "local-apk": {
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "APP_ENV": "production"
+      }
+    },
     "production": {
       "autoIncrement": true,
       "channel": "production",

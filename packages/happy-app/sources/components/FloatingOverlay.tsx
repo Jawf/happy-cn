@@ -10,11 +10,11 @@ const stylesheet = StyleSheet.create((theme, runtime) => ({
         backgroundColor: theme.colors.surface,
         borderWidth: Platform.OS === 'web' ? 0 : 0.5,
         borderColor: theme.colors.modal.border,
-        shadowColor: theme.colors.shadow.color,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 3.84,
-        shadowOpacity: theme.colors.shadow.opacity,
-        elevation: 5,
+        shadowColor: 'transparent',
+        shadowOffset: { width: 0, height: 0 },
+        shadowRadius: 0,
+        shadowOpacity: 0,
+        elevation: 0,
     },
 }));
 

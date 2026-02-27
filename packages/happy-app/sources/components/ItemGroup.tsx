@@ -59,11 +59,11 @@ const stylesheet = StyleSheet.create((theme, runtime) => ({
         marginHorizontal: Platform.select({ ios: 16, default: 12 }),
         borderRadius: Platform.select({ ios: 10, default: 16 }),
         overflow: 'hidden',
-        shadowColor: theme.colors.shadow.color,
-        shadowOffset: { width: 0, height: 0.33 },
-        shadowOpacity: theme.colors.shadow.opacity,
+        shadowColor: 'transparent',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0,
         shadowRadius: 0,
-        elevation: 1
+        elevation: 0
     },
     footer: {
         paddingTop: Platform.select({ ios: 6, default: 8 }),

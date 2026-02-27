@@ -1159,13 +1159,13 @@ export default function InputStylesDemo() {
                             paddingVertical: 12,
                             ...Platform.select({
                                 ios: {
-                                    shadowColor: '#000',
-                                    shadowOffset: { width: 0, height: 2 },
-                                    shadowOpacity: 0.05,
-                                    shadowRadius: 8,
+                                    shadowColor: 'transparent',
+                                    shadowOffset: { width: 0, height: 0 },
+                                    shadowOpacity: 0,
+                                    shadowRadius: 0,
                                 },
                                 android: {
-                                    elevation: 2,
+                                    elevation: 0,
                                 },
                             }),
                         }}>
@@ -1835,13 +1835,13 @@ export default function InputStylesDemo() {
                 borderTopColor: '#e0e0e0',
                 ...Platform.select({
                     ios: {
-                        shadowColor: '#000',
-                        shadowOffset: { width: 0, height: -2 },
-                        shadowOpacity: 0.1,
-                        shadowRadius: 4,
+                        shadowColor: 'transparent',
+                        shadowOffset: { width: 0, height: 0 },
+                        shadowOpacity: 0,
+                        shadowRadius: 0,
                     },
                     android: {
-                        elevation: 8,
+                        elevation: 0,
                     },
                 }),
             }}>

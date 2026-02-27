@@ -102,14 +102,14 @@ export const SessionView = React.memo((props: { id: string }) => {
                     height: safeArea.top,
                     backgroundColor: theme.colors.surface,
                     zIndex: 1000,
-                    shadowColor: theme.colors.shadow.color,
+                    shadowColor: 'transparent',
                     shadowOffset: {
                         width: 0,
-                        height: 2,
+                        height: 0,
                     },
-                    shadowOpacity: theme.colors.shadow.opacity,
-                    shadowRadius: 3,
-                    elevation: 5,
+                    shadowOpacity: 0,
+                    shadowRadius: 0,
+                    elevation: 0,
                 }} />
             )}
 
@@ -367,11 +367,11 @@ function SessionViewLoaded({ sessionId, session }: { sessionId: string, session:
                         flexDirection: 'row',
                         alignItems: 'center',
                         zIndex: 998, // Below voice bar but above content
-                        shadowColor: '#000',
-                        shadowOffset: { width: 0, height: 2 },
-                        shadowOpacity: 0.15,
-                        shadowRadius: 4,
-                        elevation: 4,
+                        shadowColor: 'transparent',
+                        shadowOffset: { width: 0, height: 0 },
+                        shadowOpacity: 0,
+                        shadowRadius: 0,
+                        elevation: 0,
                     }}
                 >
                     <Ionicons name="warning-outline" size={14} color="#FF9500" style={{ marginRight: 6 }} />
@@ -412,13 +412,13 @@ function SessionViewLoaded({ sessionId, session }: { sessionId: string, session:
                             justifyContent: 'center',
                             ...Platform.select({
                                 ios: {
-                                    shadowColor: '#000',
-                                    shadowOffset: { width: 0, height: 2 },
-                                    shadowOpacity: 0.1,
-                                    shadowRadius: 4,
+                                    shadowColor: 'transparent',
+                                    shadowOffset: { width: 0, height: 0 },
+                                    shadowOpacity: 0,
+                                    shadowRadius: 0,
                                 },
                                 android: {
-                                    elevation: 2,
+                                    elevation: 0,
                                 }
                             }),
                         }}

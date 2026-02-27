@@ -10,7 +10,7 @@ import { Session, Machine } from './storageTypes';
 import { InvalidateSync } from '@/utils/sync';
 import { ActivityUpdateAccumulator } from './reducer/activityUpdateAccumulator';
 import { randomUUID } from 'expo-crypto';
-import * as Notifications from 'expo-notifications';
+// import * as Notifications from 'expo-notifications';
 import { registerPushToken } from './apiPush';
 import { Platform, AppState, type AppStateStatus } from 'react-native';
 import { isRunningOnMac } from '@/utils/platform';
@@ -346,17 +346,17 @@ class Sync {
             return;
         }
         try {
-            this.backgroundSendNotificationId = await Notifications.scheduleNotificationAsync({
-                content: {
-                    title: 'Message not sent',
-                    body: 'A message is still sending in the background. It will fail in 30 seconds if not delivered.',
-                    sound: true
-                },
-                trigger: {
-                    type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
-                    seconds: Math.ceil(Sync.BACKGROUND_SEND_TIMEOUT_MS / 1000)
-                }
-            });
+            // this.backgroundSendNotificationId = await Notifications.scheduleNotificationAsync({
+            //     content: {
+            //         title: 'Message not sent',
+            //         body: 'A message is still sending in the background. It will fail in 30 seconds if not delivered.',
+            //         sound: true
+            //     },
+            //     trigger: {
+            //         type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+            //         seconds: Math.ceil(Sync.BACKGROUND_SEND_TIMEOUT_MS / 1000)
+            //     }
+            // });
         } catch (error) {
             log.log(`Failed to schedule background send timeout notification: ${error}`);
         }
@@ -367,7 +367,7 @@ class Sync {
             return;
         }
         try {
-            await Notifications.cancelScheduledNotificationAsync(this.backgroundSendNotificationId);
+            // await Notifications.cancelScheduledNotificationAsync(this.backgroundSendNotificationId);
         } catch (error) {
             log.log(`Failed to cancel background send timeout notification: ${error}`);
         } finally {
@@ -380,14 +380,14 @@ class Sync {
             return;
         }
         try {
-            await Notifications.scheduleNotificationAsync({
-                content: {
-                    title: 'Message failed',
-                    body: 'A message failed to send while the app was in background. Open Happy and retry.',
-                    sound: true
-                },
-                trigger: null
-            });
+            // await Notifications.scheduleNotificationAsync({
+            //     content: {
+            //         title: 'Message failed',
+            //         body: 'A message failed to send while the app was in background. Open Happy and retry.',
+            //         sound: true
+            //     },
+            //     trigger: null
+            // });
         } catch (error) {
             log.log(`Failed to schedule message failure notification: ${error}`);
         }
@@ -1651,41 +1651,42 @@ class Sync {
     }
 
     private registerPushToken = async () => {
-        log.log('registerPushToken');
+        log.log('registerPushToken - disabled for no-GMS build');
+        return;
         // Only register on mobile platforms
-        if (Platform.OS === 'web') {
-            return;
-        }
+        // if (Platform.OS === 'web') {
+        //     return;
+        // }
 
-        // Request permission
-        const { status: existingStatus } = await Notifications.getPermissionsAsync();
-        let finalStatus = existingStatus;
-        log.log('existingStatus: ' + JSON.stringify(existingStatus));
+        // // Request permission
+        // const { status: existingStatus } = await Notifications.getPermissionsAsync();
+        // let finalStatus = existingStatus;
+        // log.log('existingStatus: ' + JSON.stringify(existingStatus));
 
-        if (existingStatus !== 'granted') {
-            const { status } = await Notifications.requestPermissionsAsync();
-            finalStatus = status;
-        }
-        log.log('finalStatus: ' + JSON.stringify(finalStatus));
+        // if (existingStatus !== 'granted') {
+        //     const { status } = await Notifications.requestPermissionsAsync();
+        //     finalStatus = status;
+        // }
+        // log.log('finalStatus: ' + JSON.stringify(finalStatus));
 
-        if (finalStatus !== 'granted') {
-            console.log('Failed to get push token for push notification!');
-            return;
-        }
+        // if (finalStatus !== 'granted') {
+        //     console.log('Failed to get push token for push notification!');
+        //     return;
+        // }
 
-        // Get push token
-        const projectId = Constants?.expoConfig?.extra?.eas?.projectId ?? Constants?.easConfig?.projectId;
+        // // Get push token
+        // const projectId = Constants?.expoConfig?.extra?.eas?.projectId ?? Constants?.easConfig?.projectId;
 
-        const tokenData = await Notifications.getExpoPushTokenAsync({ projectId });
-        log.log('tokenData: ' + JSON.stringify(tokenData));
+        // const tokenData = await Notifications.getExpoPushTokenAsync({ projectId });
+        // log.log('tokenData: ' + JSON.stringify(tokenData));
 
-        // Register with server
-        try {
-            await registerPushToken(this.credentials, tokenData.data);
-            log.log('Push token registered successfully');
-        } catch (error) {
-            log.log('Failed to register push token: ' + JSON.stringify(error));
-        }
+        // // Register with server
+        // try {
+        //     await registerPushToken(this.credentials, tokenData.data);
+        //     log.log('Push token registered successfully');
+        // } catch (error) {
+        //     log.log('Failed to register push token: ' + JSON.stringify(error));
+        // }
     }
 
     private subscribeToUpdates = () => {

@@ -51,14 +51,14 @@ export function WebPromptModal({ config, onClose, onConfirm }: WebPromptModalPro
             borderRadius: 14,
             width: 270,
             overflow: 'hidden',
-            shadowColor: theme.colors.shadow.color,
+            shadowColor: 'transparent',
             shadowOffset: {
                 width: 0,
-                height: 2
+                height: 0
             },
-            shadowOpacity: 0.25,
-            shadowRadius: 4,
-            elevation: 5
+            shadowOpacity: 0,
+            shadowRadius: 0,
+            elevation: 0
         },
         content: {
             paddingHorizontal: 16,

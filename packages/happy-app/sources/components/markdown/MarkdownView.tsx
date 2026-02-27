@@ -404,7 +404,7 @@ const style = StyleSheet.create((theme) => ({
         right: 8,
         opacity: 0,
         zIndex: 10,
-        elevation: 10,
+        elevation: 0,
         pointerEvents: 'none',
     },
     copyButtonWrapperVisible: {
@@ -436,7 +436,7 @@ const style = StyleSheet.create((theme) => ({
         top: 8,
         right: 8,
         zIndex: 10,
-        elevation: 10,
+        elevation: 0,
         opacity: 1,
     },
     copyButtonContainerHidden: {

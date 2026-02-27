@@ -55,7 +55,7 @@ export default {
             ],
             edgeToEdgeEnabled: true,
             package: bundleId,
-            googleServicesFile: "./google-services.json",
+            // googleServicesFile: "./google-services.json",
             intentFilters: variant === 'production' ? [
                 {
                     "action": "VIEW",
@@ -123,12 +123,12 @@ export default {
                     recordAudioAndroid: true
                 }
             ],
-            [
-                "expo-notifications",
-                {
-                    "enableBackgroundRemoteNotifications": true
-                }
-            ],
+//             [
+//                 "expo-notifications",
+//                 {
+//                     "enableBackgroundRemoteNotifications": true
+//                 }
+//             ],
             [
                 'expo-splash-screen',
                 {
